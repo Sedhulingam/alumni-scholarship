@@ -1,0 +1,29 @@
+/* BranchFilter.css */
+
+.custom-form-selectt {
+  width: 127px;
+  padding: 0.3rem 1rem; /* Use Bootstrap padding values */
+  font-family: "Sofia";
+  font-size: 1rem;
+  border-width: 1px;
+  border-color: #ced4da;
+  border-radius: 0.25rem;
+  box-shadow: var(--your-box-shadow); /* Replace with your actual box-shadow value */
+  background-position: right 1rem center;
+  background-size: 16px 12px;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.custom-form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.custom-form-select option {
+  padding-left: 5px;
+  text-align: left; /* Align text to the left */
+}
+
+.custom-form-select::placeholder {
+  text-align: left; /* Align placeholder to the left */
+}

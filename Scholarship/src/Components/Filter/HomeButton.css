@@ -1,0 +1,40 @@
+
+.filter-button-containers {
+    position: relative; 
+    left: 0; 
+    margin-top: 90px;
+    margin-left: 10px;
+    display: inline-block;
+  }
+  
+  .filter-button {
+    font-size: 18px; 
+    color: #f0f2f3;
+    cursor: pointer;
+    transition: color 0.5s ease; 
+    background-color: #007bff; 
+    border: none; 
+    border-radius: 15px; 
+    padding: 10px 20px; 
+    font-family: "Sofia";
+  }
+  
+  .filter-button:hover {
+    color: #9bf7f2; 
+  }
+  
+  
+  .filter-options-container {
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    background-color: #7224f0e8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+    padding: 15px;
+    z-index: 1; 
+    display: none; 
+  }
+  
+  
+  
+  

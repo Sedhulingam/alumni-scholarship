@@ -1,0 +1,116 @@
+.filter-button-containerss {
+  position: relative;
+  left: 0;
+  margin-top: 90px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.filter-button {
+  font-size: 18px;
+  color: #f0f2f3;
+  cursor: pointer;
+  transition: color 0.5s ease;
+  background-color: #007bff;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-family: "Sofia";
+  transition: 0.4s;
+}
+.filter-buttons{
+  cursor: pointer;
+  transition: color 0.5s ease;
+  background-color: #007bff;
+  border: none;
+  font-family: Sofia;
+  color: #f0f2f3;
+  border-radius: 15px;
+  padding: 2px 5px;
+  
+}
+
+.filter-button:hover {
+  color: #9bf7f2;
+}
+.filter-buttons:hover {
+  color: #9bf7f2;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: linear-gradient(rgb(87, 171, 245), #5442fa);
+  width: 500px; /* Set the width you desire */
+  max-width: 80%; /* Add a maximum width if needed */
+  padding: 20px;
+  border-radius: 10px;
+  display: none;
+}
+
+.row1{
+  display: flex;
+  align-items: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-buttons-form {
+  cursor: pointer;
+  transition: color 0.5s ease;
+  background-color: #007bff;
+  border: none;
+  font-family: Sofia;
+  color: #f0f2f3;
+  border-radius: 15px;
+  padding: 3px 7px;
+  margin-top: 10px; /* Add margin for spacing */
+}
+
+  .popup-content {
+    height: 100%; /* You can set a specific height if needed */
+    width: 100%; /* You can set a specific width if needed */
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    
+  }
+
+/* Add this rule to show the popup */
+.popup.show {
+  display: flex;
+}
+
+h5{
+  font-family: Sofia;
+  font-size: 18px;
+}
+.close{
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.alert{
+  font-size: 12px;
+}
+
+.alert-danger {
+  margin-top: 5px;
+  width: 188px; /* Set the width as needed */
+  padding: 10px; /* Set the padding as needed */
+  /* Add any other styling properties you want to modify */
+}

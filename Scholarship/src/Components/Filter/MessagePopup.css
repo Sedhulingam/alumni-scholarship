@@ -1,0 +1,23 @@
+/* MessagePopup.css */
+
+.message-popup {
+    position: fixed;
+    top: 20px; /* Change bottom to top */
+    right: 20px; /* Add right for the padding */
+    padding: 15px;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 5px;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+    font-weight: bold; /* Add bold text */
+  }
+  
+  .message-popup.visible {
+    opacity: 1;
+  }
+  
+  .message-popup.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }

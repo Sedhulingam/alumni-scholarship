@@ -1,0 +1,91 @@
+/* Table container */
+.table-container {
+    width: 98%;
+    height: 460px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    margin: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    background-image: linear-gradient(  #0fd8b6,rgb(85, 243, 177)); 
+    position: relative; 
+  }
+  
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  thead {
+    background-color:transparent;
+    color: #fff;
+    top: 0;
+   
+  }
+
+ 
+  th{
+    
+    background-image: linear-gradient(  rgb(85, 243, 177),#0fd8b6); 
+    border: 1.4px solid rgba(170, 160, 160, 0.877);
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: "Sofia";
+  }
+
+  td {
+    border: 1.4px solid darkgray;
+    padding: 8px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative; 
+    z-index: 1;
+    font-family: "Sofia";
+  }
+  
+  /* Style even rows */
+  tr:nth-child(even) {
+    background-image: linear-gradient(rgb(87, 171, 245), #5442fa);
+    color: #fff;
+  }
+  
+  /* Style odd rows */
+  tr:nth-child(odd) {
+    background-color: rgb(246, 250, 250);
+    color: #0c0c0c;
+  }
+  
+  /* Pagination styling */
+  .pagination {
+    position: sticky;
+    bottom: 0;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .no-data-found {
+    /* font-weight: bold; */
+    padding: 20px;
+    text-align: left;
+    background-image: linear-gradient(rgb(87, 171, 245), #5442fa);
+    color: white;
+    font-family: "Sofia";
+    font-size: 1.2em; 
+  }
+ 
+  p{
+    color: white;
+    background-image: linear-gradient(rgb(87, 171, 245), #5442fa);
+    display: inline-block;
+    border-radius: 10px;
+    padding: 5px;
+    padding-left: 6px;
+    font-family: "Sofia";
+    font-size: 1em; 
+  }

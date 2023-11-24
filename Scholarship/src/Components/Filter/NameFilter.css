@@ -1,0 +1,47 @@
+/* 
+.custom-form-floating {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.filter-input {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-family: "Sofia";
+}
+
+.custom-filter-input:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.custom-form-control {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.custom-filter-input:not(:placeholder-shown) + .custom-form-control,
+.custom-filter-input:focus + .custom-form-control {
+  transform: translateY(-1.25rem) scale(0.85) translateX(0.15rem);
+  opacity: 0.65;
+} */
