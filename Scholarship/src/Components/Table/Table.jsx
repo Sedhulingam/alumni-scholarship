@@ -6,6 +6,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
+
+
 function Table({
   regNoFilter,
   nameFilter,
@@ -169,6 +178,8 @@ function Table({
           fetchUpdatedData();
           notifySuccess();
           console.log("Record deleted successfully:", data);
+          fetchUpdatedData();
+          setCurrentPage(1);
         })
         .catch((error) => {
           console.error("Error deleting record:", error);
@@ -185,7 +196,7 @@ function Table({
   };
 
   useEffect(() => {
-    fetchData();
+    fetchUpdatedData();
   }, [
     regNoFilter,
     nameFilter,
@@ -198,8 +209,10 @@ function Table({
   ]);
 
   useEffect(() => {
-    fetchData(); // Initial data fetch
-  }, []);
+    fetchData();
+
+    // Initial data fetch
+  }, [filteredData]);
 
   const fetchUpdatedData = () => {
     // Make an API call to fetch the updated data
@@ -221,8 +234,10 @@ function Table({
       .catch((err) => console.log(err));
   };
   return (
+    <>
+
     <div className="table-container" style={{ padding: "20px" }}>
-      <p>Total Records: {filteredData.length}</p>
+      <p className="total-records">Total Records: {filteredData.length}</p>
       <table>
         <thead>
           <tr>
@@ -595,6 +610,7 @@ function Table({
         theme="dark"
       />
     </div>
+    </>
   );
 
   function previousPage() {

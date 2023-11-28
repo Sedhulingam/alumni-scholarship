@@ -84,6 +84,8 @@ function EditForm({ recordId }) {
         [name]: value,
       }));
     }
+
+    console.log("Form Data After Change:", formData);
   };
 
   const handleSubmit = (e) => {
@@ -141,7 +143,7 @@ function EditForm({ recordId }) {
           value={formData.Reg_no}
           onChange={handleChange}
           placeholder="Reg No"
-          required
+          readOnly
         />
         <input
           type="text"

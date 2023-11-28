@@ -15,7 +15,8 @@
   border: none;
   border-radius: 15px;
   padding: 10px 20px;
-  font-family: "Sofia";
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+
   transition: 0.4s;
 }
 .filter-buttons{

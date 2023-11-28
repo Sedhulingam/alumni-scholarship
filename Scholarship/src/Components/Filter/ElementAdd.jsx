@@ -63,30 +63,6 @@ function ElementAdd() {
       if (gpaRegex.test(value) || value === "") {
         setFormData({ ...formData, [name]: value });
       }
-    } else if (name === "Cgpa") {
-      // Validate CGPA input as an integer
-      const cgpaRegex = /^(10(\.0{1,3})?|[0-9](\.\d{1,3})?)$/; // Allows values from 0 to 10 with up to 3 decimal places
-
-      if (cgpaRegex.test(value) || value === "") {
-        setFormData({ ...formData, [name]: value });
-      }
-    } else if (name === "Attendance") {
-      // Validate attendance input
-      const attendanceRegex = /^(100(\.0)?|\d{0,2}(\.\d{0,1})?)$/; // Allows values from 0 to 100 with up to 1 decimal place
-      if (attendanceRegex.test(value) || value === "") {
-        setFormData({ ...formData, [name]: value });
-      }
-    } else if (name === "Annual_Income") {
-      const siNoRegex = /^[0-9]+$/; // Allow only numbers
-
-      if (siNoRegex.test(value) || value === "") {
-        setFormData({ ...formData, [name]: value });
-      }
-    } else if (name === "Personal_Mail_Id" || name === "GCT_Mail_Id") {
-      // Allow a wide range of characters for email addresses
-      if (value === "" || true) {
-        setFormData({ ...formData, [name]: value });
-      }
     } else if (name === "Scholarship_Availed" && value === "NO") {
       setFormData({
         ...formData,
@@ -100,43 +76,6 @@ function ElementAdd() {
 
       if (scholarshipAmountRegex.test(value) || value === "") {
         setFormData({ ...formData, [name]: value });
-      }
-    } else if (name === "Aadhar_No") {
-      const aadharValue = value.replace(/\D/g, "");
-      if (aadharValue.length <= 12) {
-        setFormData({ ...formData, [name]: aadharValue });
-      }
-    } else if (name === "Reg_No") {
-      const alphanumericRegex = /^[A-Za-z0-9]+$/;
-
-      if (alphanumericRegex.test(value) || value === "") {
-        setFormData({ ...formData, [name]: value });
-      }
-    } else if (
-      name === "Name" ||
-      name === "Father_Name" ||
-      name === "Mother_Name" ||
-      name === "Scholarship_Name"
-    ) {
-      const nameRegex = /^[A-Za-z\s]+$/;
-
-      if (nameRegex.test(value) || value === "") {
-        setFormData({ ...formData, [name]: value });
-      }
-    } else if (
-      name === "Tenth_Mark" ||
-      name === "Twelveth_Mark" ||
-      name === "Diploma"
-    ) {
-      const marksRegex = /^\d{1,2}(\.\d{1,2})?/;
-      if (marksRegex.test(value) || value === "") {
-        setFormData({ ...formData, [name]: value });
-      }
-    } else if (name === "Mobile_No") {
-      const mobileNoRegex = /^\d{0,10}$/;
-      const validatedValue = value.replace(/\D/g, "").slice(0, 10); // Extract digits and limit to the first 10
-      if (mobileNoRegex.test(validatedValue) || validatedValue === "") {
-        setFormData({ ...formData, [name]: validatedValue });
       }
     } else if (name === "Gender") {
       // For select inputs, directly update the value in the state
@@ -190,6 +129,119 @@ function ElementAdd() {
       });
   };
 
+  const handleRegNoChange = (e) => {
+    const inputValue = e.target.value;
+    const alphanumericRegex = /^[A-Za-z0-9]+$/;
+
+    if (alphanumericRegex.test(inputValue) || inputValue === "") {
+      setFormData({ ...formData, Reg_No: inputValue });
+    }
+  };
+  const handleNameChange = (e) => {
+    const inputValue = e.target.value;
+    const alphanumericRegex = /^[A-Za-z]+$/;
+
+    if (alphanumericRegex.test(inputValue) || inputValue === "") {
+      setFormData({ ...formData, Name: inputValue });
+    }
+  };
+  const handleFatherNameChange = (e) => {
+    const inputValue = e.target.value;
+    const alphanumericRegex = /^[A-Za-z]+$/;
+
+    if (alphanumericRegex.test(inputValue) || inputValue === "") {
+      setFormData({ ...formData, Father_Name: inputValue });
+    }
+  };
+  const handleMotherNameChange = (e) => {
+    const inputValue = e.target.value;
+    const alphanumericRegex = /^[A-Za-z]+$/;
+
+    if (alphanumericRegex.test(inputValue) || inputValue === "") {
+      setFormData({ ...formData, Mother_Name: inputValue });
+    }
+  };
+  const handleTenthMarkChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Define a regular expression to allow up to two decimal places
+    const decimalRegex = /^\d{0,100}(\.\d{0,2})?$/;
+
+    if (decimalRegex.test(inputValue) && inputValue <= 100) {
+      setFormData({ ...formData, Tenth_Mark: inputValue });
+    }
+  };
+  const handleCgpaChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Define a regular expression to allow up to two decimal places
+    const decimalRegex = /^\d{0,10}(\.\d{0,2})?$/;
+
+    if (decimalRegex.test(inputValue) && inputValue <= 10) {
+      setFormData({ ...formData, Cgpa: inputValue });
+    }
+  };
+  const handleAttendanceChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Define a regular expression to allow up to two decimal places
+    const decimalRegex = /^\d{0,100}(\.\d{0,2})?$/;
+
+    if (decimalRegex.test(inputValue) && inputValue <= 100) {
+      setFormData({ ...formData, Attendance: inputValue });
+    }
+  };
+  const handleTwelvethMarkChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Define a regular expression to allow up to two decimal places
+    const decimalRegex = /^\d{0,100}(\.\d{0,2})?$/;
+
+    if (decimalRegex.test(inputValue) && inputValue <= 100) {
+      setFormData({ ...formData, Twelveth_Mark: inputValue });
+    }
+  };
+  const handleDiplomaMarkChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Define a regular expression to allow up to two decimal places
+    const decimalRegex = /^\d{0,100}(\.\d{0,2})?$/;
+
+    if (decimalRegex.test(inputValue) && inputValue <= 100) {
+      setFormData({ ...formData, Diploma: inputValue });
+    }
+  };
+
+  const handleMobileNoChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Define a regular expression to allow only exactly 10 digits
+    const mobileNoRegex = /^\d{0,10}$/;
+
+    if (mobileNoRegex.test(inputValue)) {
+      setFormData({ ...formData, Mobile_No: inputValue });
+    }
+  };
+  const handleAadharNoChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Define a regular expression to allow only exactly 10 digits
+    const aadharNoRegex = /^\d{0,12}$/;
+
+    if (aadharNoRegex.test(inputValue)) {
+      setFormData({ ...formData, Aadhar_No: inputValue });
+    }
+  };
+  const handleAnnualIncomeChange = (e) => {
+    const inputValue = e.target.value;
+
+    // Validate input to allow numbers with up to 2 decimal places
+    const decimalRegex = /^(0|[1-9]\d*)(\.\d{0,2})?$/;
+    if (decimalRegex.test(inputValue) || inputValue === "") {
+      setFormData({ ...formData, Annual_Income: inputValue });
+    }
+  };
+
   return (
     <div>
       <form className="ElementAdding" onSubmit={handleSubmit}>
@@ -197,7 +249,7 @@ function ElementAdd() {
           type="text"
           name="Reg_No"
           value={formData.Reg_No}
-          onChange={(e) => setFormData({ ...formData, Reg_No: e.target.value })}
+          onChange={(e) => handleRegNoChange(e)}
           placeholder="Reg No"
           required
         />
@@ -205,8 +257,9 @@ function ElementAdd() {
           type="text"
           name="Name"
           value={formData.Name}
-          onChange={(e) => setFormData({ ...formData, Name: e.target.value })}
+          onChange={(e) => handleNameChange(e)}
           placeholder="Name"
+          required
         />
         <select
           name="Programme"
@@ -233,7 +286,6 @@ function ElementAdd() {
           <option value="B.E">B.E</option>
           <option value="B.Tech">B.Tech</option>
           <option value="M.E">M.E</option>
-          <option value="M.Tech">M.Tech</option>
         </select>
         <select
           name="Branch"
@@ -328,55 +380,47 @@ function ElementAdd() {
           type="text"
           name="Father_Name"
           value={formData.Father_Name}
-          onChange={(e) =>
-            setFormData({ ...formData, Father_Name: e.target.value })
-          }
+          onChange={(e) => handleFatherNameChange(e)}
           placeholder="Father's Name"
+          required
         />
         <input
           type="text"
           name="Mother_Name"
           value={formData.Mother_Name}
-          onChange={(e) =>
-            setFormData({ ...formData, Mother_Name: e.target.value })
-          }
+          onChange={(e) => handleMotherNameChange(e)}
           placeholder="Mother's Name"
+          required
         />
         <input
           type="number"
           name="Tenth_Mark"
           value={formData.Tenth_Mark}
-          onChange={(e) =>
-            setFormData({ ...formData, Tenth_Mark: e.target.value })
-          }
-          placeholder="Tenth Mark (Below 100)"
+          onChange={(e) => handleTenthMarkChange(e)}
+          placeholder="Tenth Mark %"
+          required
         />
         <input
           type="number"
           name="Twelveth_Mark"
           value={formData.Twelveth_Mark}
-          onChange={(e) =>
-            setFormData({ ...formData, Twelveth_Mark: e.target.value })
-          }
-          placeholder="Twelveth Mark (Below 100)"
+          onChange={(e) => handleTwelvethMarkChange(e)}
+          placeholder="Twelveth Mark %"
         />
         <input
           type="number"
           name="Diploma"
           value={formData.Diploma}
-          onChange={(e) =>
-            setFormData({ ...formData, Diploma: e.target.value })
-          }
-          placeholder="Diploma (Below 100)"
+          onChange={(e) => handleDiplomaMarkChange(e)}
+          placeholder="Diploma %"
         />
         <input
           type="text"
           name="Mobile_No"
           value={formData.Mobile_No}
-          onChange={(e) =>
-            setFormData({ ...formData, Mobile_No: e.target.value })
-          }
-          placeholder="Mobile No(10 digits)"
+          onChange={(e) => handleMobileNoChange(e)}
+          placeholder="Mobile No"
+          required
         />
         <input
           type="text"
@@ -404,6 +448,7 @@ function ElementAdd() {
             setFormData({ ...formData, Address: e.target.value })
           }
           placeholder="Address"
+          required
         />
 
         <select
@@ -473,21 +518,17 @@ function ElementAdd() {
           <option value="NO">No</option>
         </select>
         <input
-          type="number"
+          type="text"
           name="Annual_Income"
           value={formData.Annual_Income}
-          onChange={(e) =>
-            setFormData({ ...formData, Annual_Income: e.target.value })
-          }
+          onChange={(e) => handleAnnualIncomeChange(e)}
           placeholder="Annual Income"
         />
         <input
-          type="text"
+          type="number"
           name="Aadhar_No"
           value={formData.Aadhar_No}
-          onChange={(e) =>
-            setFormData({ ...formData, Aadhar_No: e.target.value })
-          }
+          onChange={(e) => handleAadharNoChange(e)}
           placeholder="Aadhar Number"
         />
         <input
@@ -495,15 +536,13 @@ function ElementAdd() {
           name="Cgpa"
           value={formData.Cgpa}
           placeholder="Cgpa"
-          onChange={(e) => setFormData({ ...formData, Cgpa: e.target.value })}
+          onChange={(e) => handleCgpaChange(e)}
         />
         <input
           type="number"
           name="Attendance"
           value={formData.Attendance}
-          onChange={(e) =>
-            setFormData({ ...formData, Attendance: e.target.value })
-          }
+          onChange={(e) => handleAttendanceChange(e)}
           placeholder="Attendance"
           title="Enter the Current Semester Attendance Percentage"
         />

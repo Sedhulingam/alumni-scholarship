@@ -7,7 +7,8 @@
     right: 0;
     z-index: 99;
     /* background-color: #3a26f5;  */
-    background-image: linear-gradient(rgb(87, 171, 245), #5442fa);
+    /* background-image: linear-gradient(rgb(87, 171, 245), #5442fa); */
+    background-color: #6DB9EF;
     /* background-image: radial-gradient(circle farthest-corner at 0.2% 0.5%, rgb(122, 92, 212) 3.7%, rgb(51, 218, 240) 92.7%); */
     color: #fff; /* Set text color */
     display: flex;

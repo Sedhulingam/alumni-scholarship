@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import React, { useState } from "react";
 
 function NameFilter({ onFilter, filter }) {
@@ -9,7 +10,8 @@ function NameFilter({ onFilter, filter }) {
 
   return (
     <div className="form-floating mb-3">
-      <input
+      <TextField id="outlined-basic" label="Name" variant="outlined" value={filter} onChange={handleFilterChange} sx={{width: '100px'}}/>
+      {/* <input
         type="text"
         className="filter-input form-control"
         placeholder="Name"
@@ -17,8 +19,9 @@ function NameFilter({ onFilter, filter }) {
         value={filter}
         onChange={handleFilterChange}
         style={{ width: "120px" }}
+        title="Name"
       />
-      <label htmlFor="floatingInput">Name</label>
+      <label htmlFor="floatingInput">Name</label> */}
     </div>
   );
 }

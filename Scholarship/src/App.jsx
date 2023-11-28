@@ -13,6 +13,7 @@ import GenderFilter from "./Components/Filter/GenderFilter";
 import Physically from "./Components/Filter/Physically";
 import ScholarshipAvailedFilter from "./Components/Filter/ScholarshipAvailedFilter";
 import SecondPage from "./SecondPage";
+import ScholarshipName from "./Components/Filter/ScholarshipName";
 
 function App() {
   const [regNoFilter, setRegNoFilter] = useState("");
@@ -22,6 +23,8 @@ function App() {
   const [genderFilter, setGenderFilter] = useState("");
   const [physicallyFilter, setPhysically] = useState("");
   const [scholarshipAvailed, setScholarshipAvailed] = useState("");
+  const [scholarshipName, setScholarshipName] = useState("");
+  
 
   return (
     <Router>
@@ -68,6 +71,8 @@ function App() {
                     onFilter={(filterText) => setScholarshipAvailed(filterText)}
                     filter={scholarshipAvailed}
                   />
+                  <ScholarshipName onFilter={(filterText) => setScholarshipName(filterText)}
+                    filter={scholarshipName}/>
                 </div>
 
                 <Table

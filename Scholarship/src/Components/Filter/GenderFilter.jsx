@@ -1,5 +1,6 @@
 import React from "react";
 import "./GenderFilter.css";
+import { MenuItem, TextField } from "@mui/material";
 
 function GenderFilter({ onFilter, filter }) {
   const handleFilterChange = (event) => {
@@ -9,7 +10,29 @@ function GenderFilter({ onFilter, filter }) {
 
   return (
     <div className="filter-container-gender">
-      <select
+      <TextField
+          id="outlined-select-gender"
+          select
+          label="Gender"
+          defaultValue=""
+          value={filter}
+          onChange={handleFilterChange}
+          helperText="Please select your Gender"
+        >
+          
+            
+            <MenuItem  value="Male">
+              Male
+            </MenuItem>
+            <MenuItem  value="Female">
+              Female
+            </MenuItem>
+            <MenuItem  value="Others">
+              Others
+            </MenuItem>
+        
+        </TextField>
+      {/* <select
         className="custom-form-selects form-select"
         aria-label="Default select example"
         value={filter}
@@ -20,7 +43,7 @@ function GenderFilter({ onFilter, filter }) {
         <option value="M">Male</option>
         <option value="F">Female</option>
         <option value="Other">Other</option>
-      </select>
+      </select> */}
     </div>
   );
 }

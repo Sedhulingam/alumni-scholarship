@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // import "./RegnoFilter.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { MenuItem, TextField } from "@mui/material";
 
 function RegnoFilter({ onFilter, filter }) {
   const handleFilterChange = (event) => {
@@ -10,7 +11,8 @@ function RegnoFilter({ onFilter, filter }) {
 
   return (
     <div className="form-floating mb-3">
-      <input
+       <TextField id="outlined-basic" label="Reg No" variant="outlined" value={filter} onChange={handleFilterChange} sx={{width: '100px'}}/>
+      {/* <input
         type="email"
         className="filter-input form-control"
         placeholder="Reg No"
@@ -18,8 +20,9 @@ function RegnoFilter({ onFilter, filter }) {
         value={filter}
         onChange={handleFilterChange}
         style={{ width: "120px" }}
+        title="Regno"
       />
-      <label htmlFor="floatingInput">Reg No</label>
+      <label htmlFor="floatingInput">Reg No</label> */}
     </div>
   );
 }

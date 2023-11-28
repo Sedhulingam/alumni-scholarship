@@ -1,5 +1,6 @@
 import React from "react";
 import "./Physically.css";
+import { MenuItem, TextField } from "@mui/material";
 
 function Physically({ onFilter, filter }) {
   const handleFilterChange = (event) => {
@@ -9,7 +10,26 @@ function Physically({ onFilter, filter }) {
 
   return (
     <div className="filter-container-physically">
-      <select
+      <TextField
+          id="outlined-select-physically"
+          select
+          label="Disability"
+          defaultValue=""
+          value={filter}
+          onChange={handleFilterChange}
+          helperText="Physically Challenged ?"
+        >
+          
+            
+            <MenuItem  value="Yes">
+              Yes
+            </MenuItem>
+            <MenuItem  value="No">
+              No
+            </MenuItem>
+        
+        </TextField>
+      {/* <select
         className="custom-form-selection form-select"
         aria-label="Default select example"
         value={filter}
@@ -19,7 +39,7 @@ function Physically({ onFilter, filter }) {
         <option value="">Diff-abled</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
-      </select>
+      </select> */}
     </div>
   );
 }

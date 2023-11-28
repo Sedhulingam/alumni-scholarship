@@ -135,11 +135,12 @@ app.put('/alumini/:recordId', (req, res) => {
 
   // Convert recordId to a number (integer)
   recordId = parseInt(recordId, 10);
+  
 
   // Rest of your code...
   const sql = `
     UPDATE alumini
-    SET  Reg_no=?, Name=?, Programme=?, Degree=?, Branch=?, Semester=?, Father_Name=?,
+    SET   Name=?, Programme=?, Degree=?, Branch=?, Semester=?, Father_Name=?,
     Mother_Name=?, tenth_Mark=?, twelveth_Mark=?, Diploma=?, Gender=?, Physically_challenged=?,
     Mobile_No=?, Personal_Mail_id=?, Address=?, First_Graduate=?, Scholarship_Availed=?,
     Scholarship_Name=?, Scholarship_Amount=?, GCT_mail_id=?, Annual_Income=?, Aadhar_no=?,
@@ -147,7 +148,7 @@ app.put('/alumini/:recordId', (req, res) => {
     WHERE Reg_no=?
   `;
   const values = [
-    req.body.Reg_no,
+    
     req.body.Name,
     req.body.Programme,
     req.body.Degree,

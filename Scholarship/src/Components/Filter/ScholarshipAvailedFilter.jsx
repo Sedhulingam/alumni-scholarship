@@ -1,5 +1,6 @@
 import React from "react";
 import "./ScholarshipAvailedFilter.css";
+import { MenuItem, TextField } from "@mui/material";
 
 function ScholarshipAvailedFilter({ onFilter, filter }) {
   const handleFilterChange = (event) => {
@@ -9,7 +10,26 @@ function ScholarshipAvailedFilter({ onFilter, filter }) {
 
   return (
     <div className="filter-container-scholarship">
-      <select
+      <TextField
+          id="outlined-select-availed"
+          select
+          label="Scholarship"
+          defaultValue=""
+          value={filter}
+          onChange={handleFilterChange}
+          helperText="Scholarship Availed ?"
+        >
+          
+            
+            <MenuItem  value="Yes">
+              Yes
+            </MenuItem>
+            <MenuItem  value="No">
+              No
+            </MenuItem>
+        
+        </TextField>
+      {/* <select
         className="custom-form-selectt form-select"
         aria-label="Default select example"
         value={filter}
@@ -19,7 +39,7 @@ function ScholarshipAvailedFilter({ onFilter, filter }) {
         <option value="">S-ship Availed</option>
         <option value="Yes">Yes</option>
         <option value="No">No</option>
-      </select>
+      </select> */}
     </div>
   );
 }

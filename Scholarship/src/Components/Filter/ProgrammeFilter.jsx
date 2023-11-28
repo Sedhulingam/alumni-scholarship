@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProgrammeFilter.css";
+import { MenuItem, TextField } from "@mui/material";
 
 function ProgrammeFilter({ onFilter, filter }) {
   const handleFilterChange = (event) => {
@@ -9,7 +10,27 @@ function ProgrammeFilter({ onFilter, filter }) {
 
   return (
     <div className="filter-container-programme">
-      <select
+      <TextField
+          id="outlined-select-currency"
+          select
+          label="Programme"
+          defaultValue=""
+          value={filter}
+          onChange={handleFilterChange}
+          helperText="Please select your Programme"
+        >
+          
+            
+            <MenuItem  value="UG">
+              UG
+            </MenuItem>
+            <MenuItem  value="PG">
+              PG
+            </MenuItem>
+        
+        </TextField>
+
+      {/* <select
         className="custom-form-selecting form-select"
         aria-label="Default select example"
         value={filter}
@@ -19,7 +40,7 @@ function ProgrammeFilter({ onFilter, filter }) {
         <option value="">Programme</option>
         <option value="UG">UG</option>
         <option value="PG">PG</option>
-      </select>
+      </select> */}
     </div>
   );
 }
