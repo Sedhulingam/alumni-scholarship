@@ -1,10 +1,15 @@
 
 .filter-button-container {
-  position: relative; 
-  /* top: 0;  */
-  left: 0; 
+  position: absolute; 
+  
   /* margin-top: 90px; */
-  margin-left: 10px;
+  bottom: 20px;
+  right: 20px;
+}
+
+.fab-add{
+  position: absolute;
+
 }
 
 .filter-button {

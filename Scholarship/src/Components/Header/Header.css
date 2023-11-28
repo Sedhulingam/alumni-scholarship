@@ -16,6 +16,12 @@
     align-items: center;
     padding: 10px 0; /* Adjust padding as needed */
   }
+
+  .header-left{
+    display: flex;
+    gap: 2px;
+    align-items: center;
+  }
   
   .header-left img,
   .header-right img {

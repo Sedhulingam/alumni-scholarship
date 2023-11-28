@@ -130,6 +130,65 @@ app.post('/alumini',(req,res)=>{
     });
 })
 
+// app.put('/alumini/:recordId', (req, res) => {
+//   let recordId = req.params.recordId; // recordId is initially a string
+
+//   // Convert recordId to a number (integer)
+//   recordId = parseInt(recordId, 10);
+  
+
+//   // Rest of your code...
+//   const sql = `
+//     UPDATE alumini
+//     SET   Name=?, Programme=?, Degree=?, Branch=?, Semester=?, Father_Name=?,
+//     Mother_Name=?, tenth_Mark=?, twelveth_Mark=?, Diploma=?, Gender=?, Physically_challenged=?,
+//     Mobile_No=?, Personal_Mail_id=?, Address=?, First_Graduate=?, Scholarship_Availed=?,
+//     Scholarship_Name=?, Scholarship_Amount=?, GCT_mail_id=?, Annual_Income=?, Aadhar_no=?,
+//     gpa1=?, gpa2=?, gpa3=?, gpa4=?, gpa5=?, gpa6=?, gpa7=?, gpa8=?, Cgpa=?, Attendance=?
+//     WHERE Reg_no=?
+//   `;
+//   const values = [
+    
+//     req.body.Name,
+//     req.body.Programme,
+//     req.body.Degree,
+//     req.body.Branch,
+//     req.body.Semester,
+//     req.body.Father_Name,
+//     req.body.Mother_Name,
+//     req.body.tenth_Mark,
+//     req.body.twelveth_Mark,
+//     req.body.Diploma,
+//     req.body.Gender,
+//     req.body.Physically_challenged,
+//     req.body.Mobile_No,
+//     req.body.Personal_Mail_id,
+//     req.body.Address,
+//     req.body.First_Graduate,
+//     req.body.Scholarship_Availed,
+//     req.body.Scholarship_Name,
+//     req.body.Scholarship_Amount,
+//     req.body.GCT_mail_id,
+//     req.body.Annual_Income,
+//     req.body.Aadhar_no,
+//     req.body.gpa1,
+//     req.body.gpa2,
+//     req.body.gpa3,
+//     req.body.gpa4,
+//     req.body.gpa5,
+//     req.body.gpa6,
+//     req.body.gpa7,
+//     req.body.gpa8,
+//     req.body.Cgpa,
+//     req.body.Attendance,
+//     recordId
+//   ];
+
+//   db.query(sql, values, (err, result) => {
+//     if (err) return res.json(err);
+//     return res.json(result);
+//   });
+// });
 app.put('/alumini/:recordId', (req, res) => {
   let recordId = req.params.recordId; // recordId is initially a string
 
@@ -146,10 +205,10 @@ app.put('/alumini/:recordId', (req, res) => {
     Scholarship_Name=?, Scholarship_Amount=?, GCT_mail_id=?, Annual_Income=?, Aadhar_no=?,
     gpa1=?, gpa2=?, gpa3=?, gpa4=?, gpa5=?, gpa6=?, gpa7=?, gpa8=?, Cgpa=?, Attendance=?
     WHERE Reg_no=?
-  `;
-  const values = [
-    
-    req.body.Name,
+`;
+
+const updateValues = [
+  req.body.Name,
     req.body.Programme,
     req.body.Degree,
     req.body.Branch,
@@ -182,13 +241,22 @@ app.put('/alumini/:recordId', (req, res) => {
     req.body.Cgpa,
     req.body.Attendance,
     recordId
-  ];
+
+  // ... (your update values)
+];
+  
+  const conditionValue = recordId;
+
+const values = [...updateValues, conditionValue];
 
   db.query(sql, values, (err, result) => {
     if (err) return res.json(err);
     return res.json(result);
   });
 });
+
+
+
 
 
 app.delete('/alumini/:regNo', (req, res) => {

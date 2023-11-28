@@ -245,6 +245,7 @@ function ElementAdd() {
   return (
     <div>
       <form className="ElementAdding" onSubmit={handleSubmit}>
+        
         <input
           type="text"
           name="Reg_No"
