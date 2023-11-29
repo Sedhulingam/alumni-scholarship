@@ -3,7 +3,7 @@ import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import NewPage from "./NewPage";
 import Header from "./Components/Header/Header";
 import AddButton from "./Components/Filter/AddIcon";
-import Table from "./Components/Table/Table";
+import MainTable from "./Components/Table/MainTable";
 import RegNoFilter from "./Components/Filter/RegnoFilter";
 import NameFilter from "./Components/Filter/NameFilter";
 import ProgrammeFilter from "./Components/Filter/ProgrammeFilter";
@@ -75,7 +75,7 @@ function App() {
                     filter={scholarshipName}/>
                 </div>
 
-                <Table
+                <MainTable
                   regNoFilter={regNoFilter}
                   nameFilter={nameFilter}
                   programmeFilter={programmeFilter}

@@ -20,7 +20,9 @@ function ScholarshipAvailedFilter({ onFilter, filter }) {
           helperText="Scholarship Availed ?"
         >
           
-            
+          <MenuItem  value="">
+              Scholarship Availed
+            </MenuItem>
             <MenuItem  value="Yes">
               Yes
             </MenuItem>

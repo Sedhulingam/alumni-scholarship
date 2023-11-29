@@ -11,24 +11,18 @@ function ProgrammeFilter({ onFilter, filter }) {
   return (
     <div className="filter-container-programme">
       <TextField
-          id="outlined-select-currency"
-          select
-          label="Programme"
-          defaultValue=""
-          value={filter}
-          onChange={handleFilterChange}
-          helperText="Please select your Programme"
-        >
-          
-            
-            <MenuItem  value="UG">
-              UG
-            </MenuItem>
-            <MenuItem  value="PG">
-              PG
-            </MenuItem>
-        
-        </TextField>
+        id="outlined-select-currency"
+        select
+        label="Programme"
+        defaultValue=""
+        value={filter}
+        onChange={handleFilterChange}
+        helperText="Please select your Programme"
+      >
+        <MenuItem value="">Programme</MenuItem>
+        <MenuItem value="UG">UG</MenuItem>
+        <MenuItem value="PG">PG</MenuItem>
+      </TextField>
 
       {/* <select
         className="custom-form-selecting form-select"

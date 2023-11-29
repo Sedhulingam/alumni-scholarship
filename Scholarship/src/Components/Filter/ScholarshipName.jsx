@@ -18,7 +18,9 @@ const ScholarshipName = ( { onFilter, filter } ) => {
           helperText="Select Scholarship Name"
         >
           
-            
+          <MenuItem  value="">
+              Scholarship Name
+            </MenuItem>
             <MenuItem  value="FFE">
               FFE
             </MenuItem>

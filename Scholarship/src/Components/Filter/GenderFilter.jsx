@@ -20,7 +20,9 @@ function GenderFilter({ onFilter, filter }) {
           helperText="Please select your Gender"
         >
           
-            
+          <MenuItem  value="">
+              Gender
+            </MenuItem>
             <MenuItem  value="Male">
               Male
             </MenuItem>

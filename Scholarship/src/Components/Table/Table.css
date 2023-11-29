@@ -1,16 +1,16 @@
-
-/* Table container */
+.overall-table{
+  display: flex;
+  justify-content: center;
+}
 .table-container {
-  width: 98%;
-  height: 460px;
+  margin-top: 30px;
   overflow: auto;
   border: 2px solid #ccc;
-  margin: 20px;
   border-radius: 5px;
   /* padding: 10px; */
   /* background-image: linear-gradient(  #0fd8b6,rgb(85, 243, 177)); 
      */
-  position: relative;
+  
 }
 
 

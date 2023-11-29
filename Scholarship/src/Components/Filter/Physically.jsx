@@ -19,7 +19,9 @@ function Physically({ onFilter, filter }) {
           onChange={handleFilterChange}
           helperText="Physically Challenged ?"
         >
-          
+          <MenuItem  value="">
+              Disability
+            </MenuItem>
             
             <MenuItem  value="Yes">
               Yes
