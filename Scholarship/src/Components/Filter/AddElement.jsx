@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./ElementAdd.css";
+import "./AddElement.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function ElementAdd() {
+function AddElement() {
   const [formData, setFormData] = useState({
     Reg_No: "",
     Name: "",
@@ -568,4 +568,4 @@ function ElementAdd() {
   );
 }
 
-export default ElementAdd;
+export default AddElement;

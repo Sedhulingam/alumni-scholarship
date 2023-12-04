@@ -184,8 +184,7 @@ function BulkButton() {
           <button className="filter-buttons" onClick={downloadTemplate}>
             Download
           </button>
-          <br />
-          <br />
+          
           <div className="row1">
             <img
               src="src/Images/2-circle-fill.svg"

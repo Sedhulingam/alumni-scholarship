@@ -35,10 +35,12 @@ function MainTable({
 
   const recordsPerPage = 20;
   useEffect(() => {
+    
     fetch("http://localhost:8081/alumini")
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.log(err));
+      
   }, []);
 
   useEffect(() => {
@@ -222,6 +224,7 @@ function MainTable({
       .then((res) => res.json())
       .then((updatedData) => {
         setData(updatedData);
+       
 
         // After setting the updated data, check if the current page is now empty
         const startIndex = (currentPage - 1) * recordsPerPage;
@@ -234,9 +237,11 @@ function MainTable({
         }
       })
       .catch((err) => console.log(err));
+      
   };
 
   const getId = (records) => records.Reg_no;
+  
 
   return (
     <div className="overall-table">
