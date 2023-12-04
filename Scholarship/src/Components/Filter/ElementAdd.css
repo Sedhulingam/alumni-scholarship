@@ -27,7 +27,7 @@
   .ElementAdding input,
   .ElementAdding select {
     margin-bottom: 15px;
-    padding: 8px; /* Adjust padding as needed */
+    padding: 10px; /* Adjust padding as needed */
     font-size: 16px; /* Adjust font size as needed */
     font-family: sofia;
   }
