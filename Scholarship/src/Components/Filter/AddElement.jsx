@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import "./ElementAdd.css";
+import "./AddElement.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { MenuItem, TextField } from "@mui/material";
 
-function ElementAdd() {
+function AddElement() {
   const [formData, setFormData] = useState({
     Reg_No: "",
     Name: "",
@@ -89,23 +88,25 @@ function ElementAdd() {
   const notifySuccess = () => {
     toast.success("😊 Inserted Successfully!!", {
       position: "top-right",
-      autoClose: 1000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
+      theme: "dark",
     });
   };
   const notifyError = () => {
     toast.error("😢 Insert Failed. Please try again.", {
       position: "top-right",
-      autoClose: 1000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
+      theme: "dark",
     });
   };
 
@@ -247,40 +248,7 @@ function ElementAdd() {
   return (
     <div>
       <form className="ElementAdding" onSubmit={handleSubmit}>
-        <TextField
-          id="filled-regno"
-          label="Register No."
-          variant="filled"
-          value={formData.Reg_No}
-          onChange={(e) => handleRegNoChange(e)}
-          required
-        />
-        <TextField
-          id="filled-name"
-          label="Name"
-          variant="filled"
-          value={formData.Name}
-          onChange={(e) => handleNameChange(e)}
-          required
-        />
-        <TextField
-          id="outlined-select-currency"
-          select
-          label="Department"
-          defaultValue=""
-          value={formData.Programme}
-          onChange={(e) =>
-            setFormData({ ...formData, Programme: e.target.value })
-          }
-        >
-          <MenuItem value="">Programme</MenuItem>
-          <MenuItem value="UG">UG</MenuItem>
-          <MenuItem value="PG">PG</MenuItem>
-        </TextField>
-      </form>
-      {/* <form className="ElementAdding" onSubmit={handleSubmit}>
         
-
         <input
           type="text"
           name="Reg_No"
@@ -583,7 +551,7 @@ function ElementAdd() {
           title="Enter the Current Semester Attendance Percentage"
         />
         <button type="submit">Submit</button>
-      </form> */}
+      </form>
       <ToastContainer
         position="top-right"
         autoClose={2000}
@@ -600,4 +568,4 @@ function ElementAdd() {
   );
 }
 
-export default ElementAdd;
+export default AddElement;

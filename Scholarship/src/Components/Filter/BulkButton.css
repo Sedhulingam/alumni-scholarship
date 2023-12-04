@@ -38,66 +38,38 @@
   color: #9bf7f2;
 }
 
+
+
+
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: linear-gradient(rgb(87, 171, 245), #5442fa);
-  width: 500px; /* Set the width you desire */
-  max-width: 80%; /* Add a maximum width if needed */
+  background-color: #fff; 
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2); 
+  width: 500px;
+  max-width: 80%;
   padding: 20px;
   border-radius: 10px;
   display: none;
 }
 
-.row1{
-  display: flex;
-  align-items: center;
+.popup.show {
+  display: block;
 }
 
-.form-group {
+
+.popup-content {
+  border-radius: 10px; 
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 5px;
 }
 
-.filter-buttons-form {
-  cursor: pointer;
-  transition: color 0.5s ease;
-  background-color: #007bff;
-  border: none;
-  font-family: Sofia;
-  color: #f0f2f3;
-  border-radius: 15px;
-  padding: 3px 7px;
-  margin-top: 10px; /* Add margin for spacing */
-}
 
-  .popup-content {
-    height: 100%; /* You can set a specific height if needed */
-    width: 100%; /* You can set a specific width if needed */
-    background-color: #ffffff;
-    padding: 50px;
-    border-radius: 50px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
-    
-  }
-
-/* Add this rule to show the popup */
-.popup.show {
-  display: flex;
-}
-
-h5{
-  font-family: Sofia;
-  font-size: 18px;
-}
-.close{
+.close {
   position: absolute;
   top: -15px;
   right: -15px;
@@ -105,13 +77,52 @@ h5{
   cursor: pointer;
 }
 
-.alert{
-  font-size: 12px;
+
+.filter-button, .filter-buttons, .filter-buttons-form {
+  background-color: #007bff; 
+  color: #f0f2f3; 
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-family: 'Roboto', sans-serif; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filter-button:hover, .filter-buttons:hover, .filter-buttons-form:hover {
+  background-color: #0056b3; 
+  color: #ffffff; 
+}
+
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+.alert {
+  font-size: 14px; 
 }
 
 .alert-danger {
+  background-color: #f44336; 
+  color: white; 
   margin-top: 5px;
-  width: 188px; /* Set the width as needed */
-  padding: 10px; /* Set the padding as needed */
-  /* Add any other styling properties you want to modify */
+  padding: 10px;
+  border-radius: 4px; 
+}
+
+
+.row1{
+  margin-top: 50px;
+}
+.row1, h5 {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
 }
