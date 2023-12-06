@@ -207,34 +207,26 @@ function MainTable({
     }
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:8081/alumini");
-      const newData = await response.json();
-      setData(newData);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
-  useEffect(() => {
-    fetchUpdatedData();
-  }, [
-    regNoFilter,
-    nameFilter,
-    programmeFilter,
-    branchFilter,
-    genderFilter,
-    physicallyFilter,
-    scholarshipAvailed,
-    data /* other filters */,
-  ]);
 
-  useEffect(() => {
-    fetchData();
+  // useEffect(() => {
+  //   fetchUpdatedData();
+  // }, [
+  //   regNoFilter,
+  //   nameFilter,
+  //   programmeFilter,
+  //   branchFilter,
+  //   genderFilter,
+  //   physicallyFilter,
+  //   scholarshipAvailed,
+  //   data /* other filters */,
+  // ]);
 
-    // Initial data fetch
-  }, [filteredData]);
+  // useEffect(() => {
+  //   fetchData();
+
+  //   // Initial data fetch
+  // }, [filteredData]);
 
   const fetchUpdatedData = () => {
     // Make an API call to fetch the updated data
@@ -263,136 +255,7 @@ function MainTable({
 
   return (
     <div className="overall-table">
-      {/* 
-      <div style={{ height: 500, width: "95%" }} className="table-container">
-        
-          <DataGrid
-            getRowId={(records) => records.Reg_no}
-            rows={records}
-            columns={[
-              { field: "Reg_no", headerName: "Reg No", sortable: true },
-              { field: "Name", headerName: "Name", width: 170, sortable: true },
-              { field: "Programme", headerName: "Programme", sortable: true },
-              { field: "Degree", headerName: "Degree", sortable: true },
-              { field: "Branch", headerName: "Branch", sortable: true, width: 170 },
-              { field: "Semester", headerName: "Semester", sortable: true },
-              {
-                field: "Father_Name",
-                headerName: "Father_Name",
-                width: 170,
-                sortable: true,
-              },
-              {
-                field: "Mother_Name",
-                headerName: "Mother_Name",
-                width: 170,
-                sortable: true,
-              },
-              { field: "tenth_Mark", headerName: "tenth_Mark", sortable: true },
-              {
-                field: "twelveth_Mark",
-                headerName: "twelveth_Mark",
-                sortable: true,
-              },
-              { field: "Diploma", headerName: "Diploma", sortable: true },
-              { field: "Gender", headerName: "Gender", sortable: true },
-              {
-                field: "Physically_challenged",
-                headerName: "Physically_challenged",
-                width: 170,
-                sortable: true,
-              },
-              { field: "Mobile_No", headerName: "Mobile_No", sortable: true },
-              {
-                field: "Personal_Mail_id",
-                headerName: "Personal_Mail_id",
-                sortable: true,
-              },
-              { field: "Address", headerName: "Address", sortable: true,  },
-              {
-                field: "First_Graduate",
-                headerName: "First_Graduate",
-                sortable: true,
-              },
-              {
-                field: "Scholarship_Availed",
-                headerName: "Scholarship_Availed",
-                sortable: true,
-              },
-              {
-                field: "Scholarship_Name",
-                headerName: "Scholarship_Name",
-                sortable: true,
-              },
-              {
-                field: "Scholarship_Amount",
-                headerName: "Scholarship_Amount",
-                sortable: true,
-              },
-              {
-                field: "GCT_mail_id",
-                headerName: "GCT_mail_id",
-                sortable: true,
-              },
-              {
-                field: "Annual_Income",
-                headerName: "Annual_Income",
-                sortable: true,
-              },
-              { field: "Aadhar_no", headerName: "Aadhar_no", sortable: true },
-              { field: "gpa1", headerName: "gpa1", sortable: true },
-              { field: "gpa2", headerName: "gpa2", sortable: true },
-              { field: "gpa3", headerName: "gpa3", sortable: true },
-              { field: "gpa4", headerName: "gpa4", sortable: true },
-              { field: "gpa5", headerName: "gpa5", sortable: true },
-              { field: "gpa6", headerName: "gpa6", sortable: true },
-              { field: "gpa7", headerName: "gpa7", sortable: true },
-              { field: "gpa8", headerName: "gpa8", sortable: true },
-              { field: "Cgpa", headerName: "Cgpa", sortable: true },
-              { field: "Attendance", headerName: "Attendance", sortable: true },
-
-              {
-                field: "Action",
-                headerName: "Action",
-                sortable: false,
-                renderCell: (params) => (
-                  <div>
-                    <button
-                      className="btn btn-primary btn-sm mr-2"
-                      onClick={() => handleEdit(params.row)}
-                      style={{ padding: "5px 10px", borderRadius: "15px" }}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => handleDelete(params.row)}
-                      style={{
-                        padding: "5px 10px",
-                        borderRadius: "15px",
-                        marginLeft: "5px",
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                ),
-              },
-            ]}
-            pageSize={10} 
-            // rowsPerPageOptions={[10, 25, 50]} 
-            pageSizeOptions={[5, 10, 25, 50, 100, 200, 500]}
-            initialState={{
-
-              pagination: {
-                paginationModel: { page: 0, pageSize: 10 },
-              },
-            }}
-            autoHeight={false}
-          />
-        
-      </div> */}
-
+      
       <div className="table-container" style={{ padding: "20px" }}>
         <p className="total-records">Total Records: {filteredData.length}</p>
         <table>

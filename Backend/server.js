@@ -89,7 +89,7 @@ app.get('/alumini',(req,res)=>{
 // ... (your existing code)
 app.get('/api/sem1/:regno', (req, res) => {
   const regno = req.params.regno;
-console.log(regno);
+
 
   // Execute the SQL query
   const query = `SELECT * FROM sem1 WHERE Reg_no = ?`;

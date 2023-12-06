@@ -1,24 +1,23 @@
 // AllDetails.jsx
-import HomeButton from "./Components/Filter/HomeButton";
-import Header from "./Components/Header/Header";
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom"; // Add useLocation
+import { Link, useLocation } from "react-router-dom";
 import Button from "@mui/material/Button";
+import Header from "./Components/Header/Header";
+import HomeButton from "./Components/Filter/HomeButton";
 import "./AllDetails.css";
 
 const AllDetails = () => {
-  // const { regNo } = useParams();
   const location = useLocation();
   const record = location.state?.record || {};
 
-  // Ensure record.Reg_No is defined
-  const recordId = record.Reg_no;
-  console.log(recordId);
-  console.log(typeof recordId);
+  const [sem1Data, setSem1Data] = useState([]);
+  const [isSem1Visible, setIsSem1Visible] = useState(false);
+
   const fetchSem1Data = async (recordId) => {
     try {
-      const response = await fetch(`/api/sem1/${recordId}`);
-      console.log("Full Response:", response);
+      const response = await fetch(
+        `http://localhost:8081/api/sem1/${recordId}`
+      );
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -27,10 +26,22 @@ const AllDetails = () => {
       }
 
       const data = await response.json();
-      console.log("Sem1 Data:", data);
+
+      // Map each object to an array of values
+      const transformedData = data.map((item) => {
+        const { Reg_no, name, tot_credits, gpa, ...rest } = item;
+        return Object.values(rest);
+      });
+console.log(transformedData);
+      setSem1Data(transformedData);
+      setIsSem1Visible(true); // Show records after fetching data
     } catch (error) {
       console.error("Error fetching sem1 data:", error);
     }
+  };
+
+  const closeSem1Container = () => {
+    setIsSem1Visible(false);
   };
 
   return (
@@ -39,73 +50,63 @@ const AllDetails = () => {
       <Link to="/">
         <HomeButton />
       </Link>
-      <p>{recordId}</p>
-
       <div className="aligning">
         <Button
           className="sem1-button"
           size="medium"
-          variant="elevated"
-          onClick={() => fetchSem1Data(recordId)}
+          variant="contained"
+          onClick={() => {
+            if (isSem1Visible) {
+              closeSem1Container();
+            } else {
+              fetchSem1Data(record.Reg_no);
+              setIsSem1Visible(true);
+            }
+          }}
         >
-          sem1
+          {isSem1Visible ? "Sem1" : "Sem1"}
         </Button>
-        <Button
-          className="sem1-button"
-          disabled={false}
-          size="medium"
-          variant="elevated"
-        >
-          sem2
-        </Button>
-        <Button
-          className="sem1-button"
-          disabled={false}
-          size="medium"
-          variant="elevated"
-        >
-          sem3
-        </Button>
-        <Button
-          className="sem1-button"
-          disabled={false}
-          size="medium"
-          variant="elevated"
-        >
-          sem4
-        </Button>
-        <Button
-          className="sem1-button"
-          disabled={false}
-          size="medium"
-          variant="elevated"
-        >
-          sem5
-        </Button>
-        <Button
-          className="sem1-button"
-          disabled={false}
-          size="medium"
-          variant="elevated"
-        >
-          sem6
-        </Button>
-        <Button
-          className="sem1-button"
-          disabled={false}
-          size="medium"
-          variant="elevated"
-        >
-          sem7
-        </Button>
-        <Button
-          className="sem1-button"
-          disabled={false}
-          size="medium"
-          variant="elevated"
-        >
-          sem8
-        </Button>
+
+        {isSem1Visible && (
+          <table>
+            <thead>
+              <tr>
+                <th>Subject Code</th>
+                <th>Subject Name</th>
+                <th>Credits</th>
+                <th>Letter Grade</th>
+                <th>Grade</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sem1Data.map((rowData, rowIndex) => {
+                let columnCount = 0;
+
+                return (
+                  <tr key={rowIndex}>
+                    {rowData.map((value, columnIndex) => {
+                      if (
+                        columnCount === 6 ||
+                        Object.keys(sem1Data[rowIndex])
+                          [columnIndex].toLowerCase()
+                          .includes("subcode")
+                      ) {
+                        // Start a new row after 6 columns or when encountering "subcode"
+                        columnCount = 0;
+                        return <React.Fragment key={`spacer-${columnIndex}`} />;
+                      }
+
+                      columnCount++;
+
+                      return <td key={columnIndex}>{value}</td>;
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        )}
       </div>
     </div>
   );
