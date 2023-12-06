@@ -86,6 +86,48 @@ app.get('/alumini',(req,res)=>{
     })
 })
 
+// ... (your existing code)
+app.get('/api/sem1/:regno', (req, res) => {
+  const regno = req.params.regno;
+console.log(regno);
+
+  // Execute the SQL query
+  const query = `SELECT * FROM sem1 WHERE Reg_no = ?`;
+  db.query(query, [regno], (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+// app.get('/alumini/:regNo/details', (req, res) => {
+//   const regNo = req.params.regNo;
+//   const sql = 'SELECT * FROM sem1 WHERE Reg_no = ?';
+
+//   db.query(sql, [regNo], (err, data) => {
+//     if (err) {
+//       console.error('Error fetching record details:', err);
+//       return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+
+//     if (data.length === 0) {
+//       return res.status(404).json({ error: 'Record not found' });
+//     }
+
+//     // Assuming you want to send only the first matching record details
+//     const recordDetails = data[0];
+
+//     return res.status(200).json(recordDetails);
+//   });
+// });
+
+// ... (your existing code)
+
+
 app.post('/alumini',(req,res)=>{
     const sql = "INSERT INTO alumini (Reg_no,Name,Programme,Degree,Branch,Semester,Father_Name,Mother_Name,tenth_Mark,twelveth_Mark,Diploma,Gender,Physically_challenged,Mobile_No,Personal_Mail_id,Address,First_Graduate,Scholarship_Availed,Scholarship_Name,Scholarship_Amount,GCT_mail_id,Annual_Income,Aadhar_no,gpa1,gpa2,gpa3,gpa4,gpa5,gpa6,gpa7,gpa8,Cgpa,Attendance) VALUES (?)";
     const values =[

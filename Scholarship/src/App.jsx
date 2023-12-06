@@ -14,6 +14,7 @@ import Physically from "./Components/Filter/Physically";
 import ScholarshipAvailedFilter from "./Components/Filter/ScholarshipAvailedFilter";
 import SecondPage from "./SecondPage";
 import ScholarshipName from "./Components/Filter/ScholarshipName";
+import AllDetails from "./AllDetails";
 
 function App() {
   const [regNoFilter, setRegNoFilter] = useState("");
@@ -24,7 +25,6 @@ function App() {
   const [physicallyFilter, setPhysically] = useState("");
   const [scholarshipAvailed, setScholarshipAvailed] = useState("");
   const [scholarshipName, setScholarshipName] = useState("");
-  
 
   return (
     <Router>
@@ -32,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/new" element={<NewPage />} />
           <Route path="/edit" element={<SecondPage />} />
+          <Route path="/details" element={<AllDetails />} />
           <Route
             path="/"
             element={
@@ -71,8 +72,10 @@ function App() {
                     onFilter={(filterText) => setScholarshipAvailed(filterText)}
                     filter={scholarshipAvailed}
                   />
-                  <ScholarshipName onFilter={(filterText) => setScholarshipName(filterText)}
-                    filter={scholarshipName}/>
+                  <ScholarshipName
+                    onFilter={(filterText) => setScholarshipName(filterText)}
+                    filter={scholarshipName}
+                  />
                 </div>
 
                 <MainTable

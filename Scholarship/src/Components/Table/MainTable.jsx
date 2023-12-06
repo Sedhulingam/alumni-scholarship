@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import AllDetails from "../../AllDetails";
 
 // import Table from '@mui/material/Table';
 import { DataGrid } from "@mui/x-data-grid";
@@ -36,12 +37,17 @@ function MainTable({
 
   const recordsPerPage = 20;
   useEffect(() => {
-    
-    fetch("http://localhost:8081/alumini")
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => console.log(err));
-      
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8081/alumini");
+        const newData = await response.json();
+        setData(newData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -56,7 +62,7 @@ function MainTable({
         physicallyFilter.trim() === "" &&
         scholarshipAvailed.trim() === ""
       ) {
-        filtered = [...data];
+        filtered = Array.isArray(data) ? [...data] : [];
       } else {
         filtered = data.filter((row) => {
           const regNo = row.Reg_no;
@@ -159,10 +165,18 @@ function MainTable({
 
   const handleEdit = (record) => {
     // Implement your edit logic here using the record data
-    console.log("Edit clicked for record:", record);
+    // console.log("Edit clicked for record:", record);
 
     // Navigate to the edit page with the record data
     navigate(`/edit`, { state: { record } });
+  };
+
+  const handleArrowClick = (record) => {
+    // Implement your logic here
+    
+
+    // Navigate to the AllDetails component with the specific record's registration number
+    navigate(`/details`,{ state: { record } });
   };
 
   const handleDelete = (record) => {
@@ -182,22 +196,25 @@ function MainTable({
           // Fetch updated data after deletion
           fetchUpdatedData();
           notifySuccess();
-          console.log("Record deleted successfully:", data);
+          // console.log("Record deleted successfully:", data);
           fetchUpdatedData();
           setCurrentPage(1);
         })
         .catch((error) => {
-          console.error("Error deleting record:", error);
+          // console.error("Error deleting record:", error);
           notifyError();
         });
     }
   };
 
-  const fetchData = () => {
-    fetch("http://localhost:8081/alumini")
-      .then((res) => res.json())
-      .then((data) => setData(data))
-      .catch((err) => console.log(err));
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:8081/alumini");
+      const newData = await response.json();
+      setData(newData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   useEffect(() => {
@@ -223,9 +240,11 @@ function MainTable({
     // Make an API call to fetch the updated data
     fetch("http://localhost:8081/alumini")
       .then((res) => res.json())
-      .then((updatedData) => {
+      .then((apiResponse) => {
+        // Check if apiResponse is truthy and an array, otherwise set an empty array
+        const updatedData =
+          apiResponse && Array.isArray(apiResponse) ? apiResponse : [];
         setData(updatedData);
-       
 
         // After setting the updated data, check if the current page is now empty
         const startIndex = (currentPage - 1) * recordsPerPage;
@@ -238,24 +257,13 @@ function MainTable({
         }
       })
       .catch((err) => console.log(err));
-      
   };
 
   const getId = (records) => records.Reg_no;
-  
 
   return (
     <div className="overall-table">
-      {/* <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              <TableCell>hello</TableCell>
-            </TableRow>
-          </TableHead>
-        </Table>
-      </TableContainer> */}
-
+      {/* 
       <div style={{ height: 500, width: "95%" }} className="table-container">
         
           <DataGrid
@@ -383,13 +391,14 @@ function MainTable({
             autoHeight={false}
           />
         
-      </div>
+      </div> */}
 
-      {/* <div className="table-container" style={{ padding: "20px" }}>
+      <div className="table-container" style={{ padding: "20px" }}>
         <p className="total-records">Total Records: {filteredData.length}</p>
         <table>
           <thead>
             <tr>
+              <th></th>
               <th onClick={() => handleSort("SI_no")}>
                 SI_no
                 {sortBy === "SI_no" && sortOrder === "asc" && <BsCaretUpFill />}
@@ -500,6 +509,15 @@ function MainTable({
                   <BsCaretUpFill />
                 )}
                 {sortBy === "Gender" && sortOrder === "desc" && (
+                  <BsCaretDownFill />
+                )}
+              </th>
+              <th onClick={() => handleSort("Community")}>
+                Community
+                {sortBy === "Community" && sortOrder === "asc" && (
+                  <BsCaretUpFill />
+                )}
+                {sortBy === "Community" && sortOrder === "desc" && (
                   <BsCaretDownFill />
                 )}
               </th>
@@ -690,6 +708,22 @@ function MainTable({
             ) : (
               records.map((d, i) => (
                 <tr key={i}>
+                  <td>
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleArrowClick(d);
+                      }}
+                    >
+                      <img
+                        src="src/Images/double-arrow.png"
+                        alt="Arrow"
+                        style={{ cursor: "pointer" }}
+                        className="arrow-icon"
+                      />
+                    </a>
+                  </td>
                   <td>{sortedData.indexOf(d) + 1}</td>
 
                   <td>{d.Reg_no}</td>
@@ -704,6 +738,7 @@ function MainTable({
                   <td>{d.twelveth_Mark}</td>
                   <td>{d.Diploma}</td>
                   <td>{d.Gender}</td>
+                  <td>{d.Community}</td>
                   <td>{d.Physically_challenged}</td>
                   <td>{d.Mobile_No}</td>
                   <td>{d.Personal_Mail_id}</td>
@@ -748,7 +783,7 @@ function MainTable({
                 </tr>
               ))
             )}
-          </tbody>{" "}
+          </tbody>
         </table>
         <nav>
           <ul className="pagination">
@@ -794,7 +829,7 @@ function MainTable({
           pauseOnHover
           theme="dark"
         />
-      </div> */}
+      </div>
     </div>
   );
 

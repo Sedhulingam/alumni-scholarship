@@ -252,6 +252,7 @@ function AddElement() {
         <input
           type="text"
           name="Reg_No"
+          id="Reg_No"
           value={formData.Reg_No}
           onChange={(e) => handleRegNoChange(e)}
           placeholder="Reg No"
@@ -259,6 +260,7 @@ function AddElement() {
         />
         <input
           type="text"
+          id="Name"
           name="Name"
           value={formData.Name}
           onChange={(e) => handleNameChange(e)}
@@ -268,6 +270,7 @@ function AddElement() {
         <select
           name="Programme"
           value={formData.Programme}
+          id="Programme"
           onChange={(e) =>
             setFormData({ ...formData, Programme: e.target.value })
           }
@@ -281,6 +284,7 @@ function AddElement() {
 
         <select
           name="Degree"
+          id="Degree"
           value={formData.Degree}
           onChange={(e) => setFormData({ ...formData, Degree: e.target.value })}
         >
@@ -293,6 +297,7 @@ function AddElement() {
         </select>
         <select
           name="Branch"
+          id="Branch"
           value={formData.Branch}
           onChange={(e) => setFormData({ ...formData, Branch: e.target.value })}
         >
@@ -308,47 +313,48 @@ function AddElement() {
             Electronics & Communication Engineering
           </option>
           <option value="Production Engineering">
-            {" "}
-            Production Engineering{" "}
+            
+            Production Engineering
           </option>
           <option value="Electronics & Instrumentation Engineering">
-            {" "}
-            Electronics & Instrumentation Engineering{" "}
+            
+            Electronics & Instrumentation Engineering
           </option>
           <option value="Computer Science & Engineering">
-            Computer Science & Engineering{" "}
+            Computer Science & Engineering
           </option>
           <option value="Information Technology">
-            {" "}
-            Information Technology{" "}
+            
+            Information Technology
           </option>
           <option value="Industrial Biotechnology">
             Industrial Biotechnology
           </option>
           <option value="Structural Engineering">Structural Engineering</option>
           <option value="Environmental Engineering ">
-            Environmental Engineering{" "}
+            Environmental Engineering
           </option>
           <option value="Geotechnical Engineering ">
-            Geotechnical Engineering{" "}
+            Geotechnical Engineering
           </option>
           <option value="Engineering Design">Engineering Design </option>
           <option value="Manufacturing Engineering">
-            Manufacturing Engineering{" "}
+            Manufacturing Engineering
           </option>
           <option value="Thermal Engineering">Thermal Engineering</option>
           <option value="Power Systems Engineering">
-            {" "}
-            Power Systems Engineering{" "}
+            
+            Power Systems Engineering
           </option>
           <option value="Power Electronics & Drives">
-            Power Electronics & Drives{" "}
+            Power Electronics & Drives
           </option>
           <option value="Applied Electronics">Applied Electronics </option>
           <option value="VLSI designx">VLSI design </option>
         </select>
         <select
           name="Current_Semester"
+          id="Current_Semester"
           value={formData.Current_Semester}
           onChange={(e) =>
             setFormData({ ...formData, Current_Semester: e.target.value })
@@ -367,6 +373,7 @@ function AddElement() {
           <input
             key={semester}
             type="number"
+            id={`gpa${semester}`}
             name={`gpa${semester}`}
             value={formData[`gpa${semester}`]}
             onChange={handleChange}
@@ -382,6 +389,7 @@ function AddElement() {
 
         <input
           type="text"
+          id="Father_Name"
           name="Father_Name"
           value={formData.Father_Name}
           onChange={(e) => handleFatherNameChange(e)}
@@ -390,6 +398,7 @@ function AddElement() {
         />
         <input
           type="text"
+          id="Mother_Name"
           name="Mother_Name"
           value={formData.Mother_Name}
           onChange={(e) => handleMotherNameChange(e)}
@@ -398,6 +407,7 @@ function AddElement() {
         />
         <input
           type="number"
+          id="Tenth_Mark"
           name="Tenth_Mark"
           value={formData.Tenth_Mark}
           onChange={(e) => handleTenthMarkChange(e)}
@@ -406,6 +416,7 @@ function AddElement() {
         />
         <input
           type="number"
+          id="Twelveth_Mark"
           name="Twelveth_Mark"
           value={formData.Twelveth_Mark}
           onChange={(e) => handleTwelvethMarkChange(e)}
@@ -413,6 +424,7 @@ function AddElement() {
         />
         <input
           type="number"
+          id="Diploma"
           name="Diploma"
           value={formData.Diploma}
           onChange={(e) => handleDiplomaMarkChange(e)}
@@ -420,6 +432,7 @@ function AddElement() {
         />
         <input
           type="text"
+          id="Mobile_No"
           name="Mobile_No"
           value={formData.Mobile_No}
           onChange={(e) => handleMobileNoChange(e)}
@@ -428,6 +441,7 @@ function AddElement() {
         />
         <input
           type="text"
+          id="Personal_Mail_Id"
           name="Personal_Mail_Id"
           value={formData.Personal_Mail_Id}
           onChange={(e) =>
@@ -437,6 +451,7 @@ function AddElement() {
         />
         <input
           type="text"
+          id="GCT_Mail_Id"
           name="GCT_Mail_Id"
           value={formData.GCT_Mail_Id}
           onChange={(e) =>
@@ -446,6 +461,7 @@ function AddElement() {
         />
         <input
           type="text"
+          id="Address"
           name="Address"
           value={formData.Address}
           onChange={(e) =>
@@ -457,6 +473,7 @@ function AddElement() {
 
         <select
           name="Gender"
+          id="Gender"
           value={formData.Gender}
           onChange={(e) => handleChange(e)} // Pass the event to handleChange
         >
@@ -468,6 +485,7 @@ function AddElement() {
 
         <select
           name="Physically_Challenged"
+          id="Physically_Challenged"
           value={formData.Physically_Challenged}
           onChange={(e) =>
             setFormData({ ...formData, Physically_Challenged: e.target.value })
@@ -478,6 +496,7 @@ function AddElement() {
           <option value="NO">No</option>
         </select>
         <select
+        id="Scholarship_Availed"
           name="Scholarship_Availed"
           value={formData.Scholarship_Availed}
           onChange={(e) =>
@@ -493,6 +512,7 @@ function AddElement() {
             <input
               type="text"
               name="Scholarship_Name"
+              id="Scholarship_Name"
               value={formData.Scholarship_Name}
               onChange={(e) =>
                 setFormData({ ...formData, Scholarship_Name: e.target.value })
@@ -501,6 +521,7 @@ function AddElement() {
             />
             <input
               type="number"
+              id="Scholarship_Amount"
               name="Scholarship_Amount"
               value={formData.Scholarship_Amount}
               onChange={(e) =>
@@ -512,6 +533,7 @@ function AddElement() {
         )}
         <select
           name="First_Graduate"
+          id="First_Graduate"
           value={formData.First_Graduate}
           onChange={(e) =>
             setFormData({ ...formData, First_Graduate: e.target.value })
@@ -523,6 +545,7 @@ function AddElement() {
         </select>
         <input
           type="text"
+          id="Annual_Income"
           name="Annual_Income"
           value={formData.Annual_Income}
           onChange={(e) => handleAnnualIncomeChange(e)}
@@ -530,6 +553,7 @@ function AddElement() {
         />
         <input
           type="number"
+          id="Aadhar_No"
           name="Aadhar_No"
           value={formData.Aadhar_No}
           onChange={(e) => handleAadharNoChange(e)}
@@ -537,6 +561,7 @@ function AddElement() {
         />
         <input
           type="number"
+          id="Cgpa"
           name="Cgpa"
           value={formData.Cgpa}
           placeholder="Cgpa"
@@ -544,6 +569,7 @@ function AddElement() {
         />
         <input
           type="number"
+          id="Attendance"
           name="Attendance"
           value={formData.Attendance}
           onChange={(e) => handleAttendanceChange(e)}

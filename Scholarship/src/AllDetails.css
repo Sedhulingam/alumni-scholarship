@@ -1,0 +1,17 @@
+/* Add these styles to your CSS file or style section */
+.aligning {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center items vertically and horizontally */
+  width: 90%;
+  margin: auto;
+  flex-direction: column;
+}
+
+.sem1-button {
+  width: 85%; /* Adjust the width as needed */
+  margin: auto;
+  cursor: pointer; /* Add cursor pointer for better UX */
+  
+}
+

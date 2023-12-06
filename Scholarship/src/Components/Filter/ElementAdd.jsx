@@ -20,6 +20,7 @@ function ElementAdd() {
     Twelveth_Mark: "",
     Diploma: "",
     Gender: "",
+    Community:"",
     Physically_Challenged: "",
     Mobile_No: "",
     Personal_Mail_Id: "",

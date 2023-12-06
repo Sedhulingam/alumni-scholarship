@@ -1,6 +1,9 @@
-.overall-table{
+.overall-table {
   display: flex;
   justify-content: center;
+  margin: auto;
+  width: 98%;
+  height: 500px;
 }
 .table-container {
   margin-top: 30px;
@@ -10,10 +13,7 @@
   /* padding: 10px; */
   /* background-image: linear-gradient(  #0fd8b6,rgb(85, 243, 177)); 
      */
-  
 }
-
-
 
 table {
   border-collapse: collapse;
@@ -97,4 +97,22 @@ tr:nth-child(odd) {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif !important;
 
   font-size: 1em;
+}
+@keyframes blink {
+  0%, 100% {
+    transform: scale(1);
+    filter: hue-rotate(0deg); /* Set the hue-rotate value for the color change */
+  }
+  50% {
+    transform: scale(1.2);
+    filter: hue-rotate(180deg); /* Adjust the hue-rotate value for the color change */
+  }
+}
+
+.arrow-icon {
+  width: 20px; 
+  height: 20px; 
+  cursor: pointer;
+  animation: blink 1.5s infinite;
+  filter: brightness(0) invert(1);
 }
