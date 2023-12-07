@@ -1,16 +1,20 @@
 /* Add these styles to your CSS file or style section */
 .aligning {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center items vertically and horizontally */
-  width: 60%;
-  margin: auto;
-  flex-direction: column;
+  display: flex !important;
+  gap: 10px;
+  justify-content: center !important;
+  align-items: center !important; /* Center items vertically and horizontally */
+  width: 60% !important;
+  margin: auto !important;
+  flex-direction: column !important;
 }
 
 .sem1-button {
-  width: 100%; /* Adjust the width as needed */
-  margin: auto;
-  cursor: pointer; /* Add cursor pointer for better UX */
-  
+  width: 100% !important; /* Adjust the width as needed */
+  margin: auto !important;
+  cursor: pointer !important; /* Add cursor pointer for better UX */
+  background-color: #45acf5 !important;
+  color: white !important;
+  font-size: medium !important;
+  font-weight: bold !important; /* Make the font bold */
 }

@@ -62,9 +62,9 @@ button:focus-visible {
     color: #747bff;
   }
 
-  button {
+  /* button {
     background-color: #4c2dd8;
-  }
+  } */
 }
 
 .filter-container{

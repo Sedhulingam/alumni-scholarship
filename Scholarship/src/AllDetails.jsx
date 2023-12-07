@@ -1,4 +1,3 @@
-// AllDetails.jsx
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -26,15 +25,33 @@ const AllDetails = () => {
       }
 
       const data = await response.json();
+      
+      const filteredData = data.map(({ Reg_no, name, ...rest }) => rest);
 
-      // Map each object to an array of values
-      const transformedData = data.map((item) => {
-        const { Reg_no, name, tot_credits, gpa, ...rest } = item;
-        return Object.values(rest);
-      });
-console.log(transformedData);
+      // Extract keys
+      const keys = Object.keys(filteredData[0]);
+
+      // Filter keys based on patterns
+      const subCodeKeys = keys.filter((key) => key.includes("subcode"));
+      const nameKeys = keys.filter((key) => key.includes("name"));
+      const creditsKeys = keys.filter((key) => key.endsWith("c"));
+      const lgKeys = keys.filter((key) => key.includes("lg"));
+      const gKeys = keys.filter((key) => key.endsWith("g") && !key.includes("lg"));
+      const resultKeys = keys.filter((key) => key.endsWith("r"));
+
+      // Map the data to the desired format
+      const transformedData = subCodeKeys.map((subCodeKey, index) => ({
+        subjectCode: data[0][subCodeKey],
+        subject: data[0][nameKeys[index]],
+        credits: data[0][creditsKeys[index]],
+        letterGrade: data[0][lgKeys[index]],
+        grade: data[0][gKeys[index]],
+        result: data[0][resultKeys[index]],
+      }));
+
+      console.log(transformedData);
       setSem1Data(transformedData);
-      setIsSem1Visible(true); // Show records after fetching data
+      setIsSem1Visible(true);
     } catch (error) {
       console.error("Error fetching sem1 data:", error);
     }
@@ -72,7 +89,7 @@ console.log(transformedData);
             <thead>
               <tr>
                 <th>Subject Code</th>
-                <th>Subject Name</th>
+                <th>Subject</th>
                 <th>Credits</th>
                 <th>Letter Grade</th>
                 <th>Grade</th>
@@ -80,33 +97,41 @@ console.log(transformedData);
               </tr>
             </thead>
             <tbody>
-              {sem1Data.map((rowData, rowIndex) => {
-                let columnCount = 0;
-
-                return (
-                  <tr key={rowIndex}>
-                    {rowData.map((value, columnIndex) => {
-                      if (
-                        columnCount === 6 ||
-                        Object.keys(sem1Data[rowIndex])
-                          [columnIndex].toLowerCase()
-                          .includes("subcode")
-                      ) {
-                        // Start a new row after 6 columns or when encountering "subcode"
-                        columnCount = 0;
-                        return <React.Fragment key={`spacer-${columnIndex}`} />;
-                      }
-
-                      columnCount++;
-
-                      return <td key={columnIndex}>{value}</td>;
-                    })}
-                  </tr>
-                );
-              })}
+              {sem1Data.map((rowData, rowIndex) => (
+                <tr key={rowIndex}>
+                  <td>{rowData.subjectCode}</td>
+                  <td>{rowData.subject}</td>
+                  <td>{rowData.credits}</td>
+                  <td>{rowData.letterGrade}</td>
+                  <td>{rowData.grade}</td>
+                  <td>{rowData.result}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         )}
+        <Button
+          className="sem1-button"
+          size="medium"
+          variant="contained">Sem2</Button><Button
+          className="sem1-button"
+          size="medium"
+          variant="contained">Sem3</Button><Button
+          className="sem1-button"
+          size="medium"
+          variant="contained">Sem4</Button><Button
+          className="sem1-button"
+          size="medium"
+          variant="contained">Sem5</Button><Button
+          className="sem1-button"
+          size="medium"
+          variant="contained">Sem6</Button><Button
+          className="sem1-button"
+          size="medium"
+          variant="contained">Sem7</Button><Button
+          className="sem1-button"
+          size="medium"
+          variant="contained">Sem</Button>
       </div>
     </div>
   );
